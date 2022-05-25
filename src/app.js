@@ -10,6 +10,8 @@ const app = express();
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.set("views", __dirname + "/views");
+
 //Route Prefixes
 app.use("/", indexRouter);
 app.use("/api/", apiRouter);
