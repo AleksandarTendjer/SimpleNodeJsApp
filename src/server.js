@@ -1,11 +1,15 @@
 const express = require("express");
-const app = require("./app");
 
-const PORT = process.env.PORT || 8080;
+const app = require("./app");
+var http = require("http");
 
 // Start the server
 
-const serve = () =>
-  app.listen(PORT, () => {
-    logger.info(`🌏 Express server started at http://localhost:${PORT}`);
-  });
+const PORT = process.env.PORT || 8080;
+
+app.set("port", PORT);
+
+var server = http.createServer(app);
+server.listen(PORT, () => {
+  console.log(`🌏 Express server started at http://localhost:${PORT}`);
+});
