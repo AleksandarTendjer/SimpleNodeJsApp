@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 8080;
 
 app.set("port", PORT);
 
-var server = http.createServer(app);
+const server = http.createServer(app);
 server.listen(PORT, () => {
   console.log(`🌏 Express server started at http://localhost:${PORT}`);
 });

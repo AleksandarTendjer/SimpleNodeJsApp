@@ -1,9 +1,10 @@
-let bodyParser = require("body-parser");
-let compression = require("compression");
-let path = require("path");
-let express = require("express");
-let indexRouter = require("./routes/index");
-let apiRouter = require("./routes/api");
+const bodyParser = require("body-parser");
+const compression = require("compression");
+const path = require("path");
+const express = require("express");
+const indexRouter = require("./routes/index");
+const apiRouter = require("./routes/api");
+const lokiRouter = require("./routes/lokiRouter");
 
 const app = express();
 
@@ -13,7 +14,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set("views", __dirname + "/views");
 
 //Route Prefixes
-app.use("/", indexRouter);
+//app.use("/", indexRouter);
+app.use("/", lokiRouter);
 app.use("/api/", apiRouter);
 
 app.use(
