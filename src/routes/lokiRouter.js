@@ -1,6 +1,9 @@
-const lokiController = require("../controllers/lokiController");
+const express = require("express");
 
-module.exports = function (app) {
-  app.get("/hello-rest/:lang", lokiController.getPairByLanguage);
-  app.get("/hello/:lang", lokiController.getPairByLanguage);
-};
+const lokiController = require("../controllers/lokiController");
+const router = express.Router();
+
+router.get("/hello-rest/", lokiController.getPairByLanguage);
+router.get("/hello/", lokiController.getPairByLanguage);
+
+module.exports = router;
