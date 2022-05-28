@@ -1,12 +1,13 @@
 const { json } = require("body-parser");
 const lokiModel = require("../models/lokiModel");
+
 exports.getPairByLanguage = async (req, res) => {
   if (Object.keys(req?.query).length === 0) {
-    lokiModel.retLangWordPairs("EN").then(function (pair) {
+    lokiModel.getLangWordPair("EN").then(function (pair) {
       return res.json(200, pair.word);
     });
   } else {
-    lokiModel.retLangWordPairs(req.query?.lang).then(function (pair) {
+    lokiModel.getLangWordPair(req.query?.lang).then(function (pair) {
       return res.json(200, pair.word);
     });
   }
@@ -17,7 +18,6 @@ exports.loginPost = async function (req, res) {
     .checkIfUserExists(req.body?.username, req.body?.password)
     .then(function (doMatch) {
       if (doMatch) {
-        //return res.status(200).json({ info: "Successfully logged in!" });
         return res.redirect("/admin");
       }
       return res.status(400).json({ error: "Invalid Email or Password!" });

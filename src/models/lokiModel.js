@@ -1,8 +1,9 @@
 const db = require("../lokiDb");
 const bcrypt = require("bcryptjs");
 
-exports.retLangWordPairs = async function (lang) {
+exports.getLangWordPair = async function (lang) {
   try {
+    lang = lang.toUpperCase();
     const langWordPairs = db.getCollection("langWordPairs");
     let pair = langWordPairs.findOne({ lang: lang });
     return pair;
@@ -37,6 +38,18 @@ exports.checkIfUserExists = async function (username, password) {
       });
     }
     return false;
+  } catch (e) {
+    throw e;
+  }
+};
+exports.insertLangWordPair = async function (language, word) {
+  try {
+    const langWordPairCollection = db.getCollection("langWordPairs");
+    let pair = langWordPairCollection.insertOne({
+      lang: language,
+      word: word,
+    });
+    return pair;
   } catch (e) {
     throw e;
   }
