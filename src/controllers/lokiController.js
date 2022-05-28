@@ -1,4 +1,3 @@
-const { json } = require("body-parser");
 const lokiModel = require("../models/lokiModel");
 
 exports.getPairByLanguage = async (req, res) => {

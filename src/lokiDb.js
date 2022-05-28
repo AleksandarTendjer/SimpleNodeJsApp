@@ -1,12 +1,12 @@
 const loki = require("lokijs");
 
-const db = new loki("app_data/langWordPairs.json", {
+const lokiDB = new loki("app_data/langWordPairs.json", {
   autosave: true,
   autoload: true,
   throttledSaves: true,
 });
 
-let langWordPaircollection = db.addCollection("langWordPairs", {
+let langWordPaircollection = lokiDB.addCollection("langWordPairs", {
   unique: ["lang"],
   autoupdate: true,
 });
@@ -23,9 +23,9 @@ langWordPaircollection.insert({ lang: "N", word: "Hei Verden!" });
 langWordPaircollection.insert({ lang: "H", word: "Helló Világ!" });
 langWordPaircollection.insert({ lang: "LT", word: "Sveika pasaule!" });
 
-let userCollection = db.addCollection("users", {
+let userCollection = lokiDB.addCollection("users", {
   unique: ["username"],
   autoupdate: true,
 });
 
-module.exports = db;
+module.exports = lokiDB;
