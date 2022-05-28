@@ -1,7 +1,7 @@
-var express = require("express");
-var adminRouter = require("./admin");
+const express = require("express");
+const adminRouter = require("./admin");
 
-var app = express();
+const app = express();
 
 app.use("/admin/", adminRouter);
 
