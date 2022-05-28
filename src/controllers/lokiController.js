@@ -17,7 +17,8 @@ exports.loginPost = async function (req, res) {
     .checkIfUserExists(req.body?.username, req.body?.password)
     .then(function (doMatch) {
       if (doMatch) {
-        return res.status(200).json({ info: "Successfully logged in!" });
+        //return res.status(200).json({ info: "Successfully logged in!" });
+        return res.redirect("/admin");
       }
       return res.status(400).json({ error: "Invalid Email or Password!" });
     });
