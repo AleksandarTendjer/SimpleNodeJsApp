@@ -32,7 +32,7 @@ exports.checkIfUserExists = async function (username, password) {
       username: username,
     });
     if (user != null) {
-      bcrypt.compare(password, user.password).then((doMatch) => {
+      return await bcrypt.compare(password, user.password).then((doMatch) => {
         return doMatch;
       });
     }
