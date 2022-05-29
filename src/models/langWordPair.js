@@ -19,4 +19,7 @@ langWordPairSchema.method({});
  * Register
  */
 
-mongoose.model("LangWordPair", langWordPairSchema);
+module.exports = LangWordPair = mongoose.model(
+  "LangWordPair",
+  langWordPairSchema
+);
