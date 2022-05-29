@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
  */
 
 const langWordPairSchema = new Schema({
-  lang: { type: String, default: "" },
+  lang: { type: String, unique: true, default: "" },
   word: { type: String, default: "" },
 });
 /**

@@ -1,6 +1,7 @@
 const UserModel = require("../models/user");
 const LangWordPairModel = require("../models/langWordPair");
-
+const bcrypt = require("bcryptjs");
+async function asyncCall(passowrd, hashedPassword) {}
 exports.getPairByLanguage = async (req, res) => {
   if (Object.keys(req?.query).length === 0) {
     await LangWordPairModel.findOne({ lang: "EN" }).then((pair) => {
@@ -16,18 +17,24 @@ exports.getPairByLanguage = async (req, res) => {
 exports.loginPost = async function (req, res) {
   await UserModel.findOne({
     username: req.body?.username,
-    password: req.body?.password,
-  }).then((doMatch) => {
-    if (doMatch) {
-      return res.redirect("/admin");
-    }
-    return res.status(400).json({ error: "Invalid Email or Password!" });
+  }).then((user) => {
+    bcrypt.compare(req.body.password, user?.password).then((doMatch) => {
+      if (doMatch) {
+        return res.redirect("/admin");
+      }
+      return res.status(400).json({ error: "Invalid Email or Password!" });
+    });
   });
 };
 exports.registerPost = async function (req, res) {
-  await UserModel.create(req.body, function (err) {
-    if (err) throw err;
-    console.log("");
-    return res.status(200).json({ info: "Successfully registered in!" });
-  });
+  const hashedpassword = await bcrypt.hash(req.body?.password, 5);
+  await UserModel.create(
+    { username: req.body?.username, password: hashedpassword },
+    function (err) {
+      if (err)
+        return res.status(400).json({ info: "The user already exists!" });
+
+      return res.status(200).json({ info: "Successfully registered in!" });
+    }
+  );
 };
