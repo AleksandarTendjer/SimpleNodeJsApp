@@ -7,7 +7,7 @@ exports.getPairByLanguage = async (req, res) => {
       return res.json(200, pair.word);
     });
   } else {
-    LangWordPairModel.findOne({ lang: req.body?.lang }).then((pair) => {
+    LangWordPairModel.findOne({ lang: req.query?.lang }).then((pair) => {
       return res.json(200, pair.word);
     });
   }
@@ -25,7 +25,7 @@ exports.loginPost = async function (req, res) {
   });
 };
 exports.registerPost = async function (req, res) {
-  await UserModel.insertOne(req.body, function (err, res) {
+  await UserModel.create(req.body, function (err) {
     if (err) throw err;
     console.log("");
     return res.status(200).json({ info: "Successfully registered in!" });
