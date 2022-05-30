@@ -5,6 +5,7 @@ const express = require("express");
 const indexRouter = require("./routes/index");
 const mongoAdminRouter = require("./routes/adminRouter");
 const mongoAuthRouter = require("./routes/authRouter");
+const systranRouter = require("./routes/systranAPIRouter");
 const app = express();
 
 app.use(compression());
@@ -19,6 +20,7 @@ app.set("view engine", "html");
 //app.use("/", indexRouter);
 app.use("/", mongoAuthRouter);
 app.use("/admin", mongoAdminRouter);
+app.use("/translate", systranRouter);
 
 app.use(
   express.static(path.join(__dirname, "public"), { maxAge: 31557600000 })

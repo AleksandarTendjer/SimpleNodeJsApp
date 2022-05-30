@@ -1,7 +1,6 @@
 const UserModel = require("../models/user");
 const LangWordPairModel = require("../models/langWordPair");
 const bcrypt = require("bcryptjs");
-async function asyncCall(passowrd, hashedPassword) {}
 exports.getPairByLanguage = async (req, res) => {
   if (Object.keys(req?.query).length === 0) {
     await LangWordPairModel.findOne({ lang: "EN" }).then((pair) => {
