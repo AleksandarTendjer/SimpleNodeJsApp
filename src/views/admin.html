@@ -62,6 +62,60 @@
           </form>
           
         </div>
+
+
+        <div class="translate-section" id="translate-sec">
+          <form
+          method="GET"
+          action="/translate/getTranslation/"
+          id="translateForm"
+          class="my-login-validation login-login"
+          >
+          <div class="form-group">
+            <label for="lang">Language to translate from:</label>
+            <input
+              id="source"
+              type="text"
+              class="form-control"
+              name="source"
+              value=""
+              required
+              autofocus
+            />
+          </div>
+          <div class="form-group">
+            <label for="target">Language to translate to:</label>
+            <input
+              id="target"
+              type="text"
+              class="form-control"
+              name="target"
+              value=""
+              required
+              autofocus
+            />
+          </div>
+        
+          <div class="form-group">
+            <label for="content"
+              >Word
+            </label>
+            <input
+              id="content"
+              type="text"
+              class="form-control"
+              name="content"
+              required
+              data-eye
+            />
+          </div>
+        
+          <div class="form-group m-0">
+            <button type="submit" class="btn btn-primary btn-block">Translate</button>
+          </div>
+        </form>
+        
+      </div>
     </div>
 
 </div>

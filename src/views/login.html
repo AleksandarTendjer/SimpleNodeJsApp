@@ -35,12 +35,12 @@
           <div class="col-12 user-img">
             <img src="static/img/user.png" th:src="@{/img/user.png}" />
           </div>
-          <form class="col-12" th:action="@{/login}" method="get">
+          <form class="col-12" method="post">
             <div class="form-group" id="user-group">
               <input
                 type="text"
                 class="form-control"
-                placeholder="Nombre de usuario"
+                placeholder="username"
                 name="username"
               />
             </div>
@@ -48,7 +48,7 @@
               <input
                 type="password"
                 class="form-control"
-                placeholder="Contrasena"
+                placeholder="password"
                 name="password"
               />
             </div>
@@ -56,15 +56,6 @@
               <i class="fas fa-sign-in-alt"></i> login
             </button>
           </form>
-          <div class="col-12 forgot">
-            <a href="#">Forgotten credentials?</a>
-          </div>
-          <div th:if="${param.error}" class="alert alert-danger" role="alert">
-            Invalid username and password.
-          </div>
-          <div th:if="${param.logout}" class="alert alert-success" role="alert">
-            You have been logged out.
-          </div>
         </div>
       </div>
     </div>

@@ -1,17 +1,5 @@
 const UserModel = require("../models/user");
-const LangWordPairModel = require("../models/langWordPair");
 const bcrypt = require("bcryptjs");
-exports.getPairByLanguage = async (req, res) => {
-  if (Object.keys(req?.query).length === 0) {
-    await LangWordPairModel.findOne({ lang: "EN" }).then((pair) => {
-      return res.json(200, pair.word);
-    });
-  } else {
-    LangWordPairModel.findOne({ lang: req.query?.lang }).then((pair) => {
-      return res.json(200, pair.word);
-    });
-  }
-};
 
 exports.loginPost = async function (req, res) {
   await UserModel.findOne({
@@ -24,6 +12,10 @@ exports.loginPost = async function (req, res) {
       return res.status(400).json({ error: "Invalid Email or Password!" });
     });
   });
+};
+
+exports.loginGet = async function (req, res) {
+  return res.status(200).render("login");
 };
 exports.registerPost = async function (req, res) {
   const hashedpassword = await bcrypt.hash(req.body?.password, 5);

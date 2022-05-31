@@ -5,7 +5,7 @@ const express = require("express");
 const indexRouter = require("./routes/index");
 const mongoAdminRouter = require("./routes/adminRouter");
 const mongoAuthRouter = require("./routes/authRouter");
-const systranRouter = require("./routes/systranAPIRouter");
+const systranRouter = require("./routes/translateRouter");
 const app = express();
 
 app.use(compression());
