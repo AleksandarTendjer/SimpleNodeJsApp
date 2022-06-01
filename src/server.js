@@ -5,7 +5,7 @@ const app = require("./app");
 const http = require("http");
 
 // DB connection
-const MONGO_URI = process.env.MONGO_URI;
+const MONGO_URI = process.env.DOCKER_MONGO_URI;
 const mongoose = require("mongoose");
 
 // Remove the warning with Promise
