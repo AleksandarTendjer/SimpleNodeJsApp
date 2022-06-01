@@ -17,6 +17,10 @@ exports.loginPost = async function (req, res) {
 exports.loginGet = async function (req, res) {
   return res.status(200).render("login");
 };
+exports.registerGet = async function (req, res) {
+  return res.status(200).render("register");
+};
+
 exports.registerPost = async function (req, res) {
   const hashedpassword = await bcrypt.hash(req.body?.password, 5);
   await UserModel.create(

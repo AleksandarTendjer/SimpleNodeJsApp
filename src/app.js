@@ -4,8 +4,8 @@ const path = require("path");
 const express = require("express");
 const indexRouter = require("./routes/index");
 const mongoAdminRouter = require("./routes/adminRouter");
-const mongoAuthRouter = require("./routes/authRouter");
 const systranRouter = require("./routes/translateRouter");
+const mongoAuthRouter = require("./routes/authRouter");
 const app = express();
 
 app.use(compression());
@@ -17,8 +17,8 @@ app.engine("html", require("ejs").renderFile);
 app.set("view engine", "html");
 
 //Route Prefixes
-//app.use("/", indexRouter);
-app.use("/", mongoAuthRouter);
+app.use("/", indexRouter);
+app.use("/secure", mongoAuthRouter);
 app.use("/admin", mongoAdminRouter);
 app.use("/translate", systranRouter);
 
