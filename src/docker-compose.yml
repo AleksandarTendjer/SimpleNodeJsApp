@@ -1,0 +1,18 @@
+version: "3"
+services:
+  login-app:
+    container_name: simple-node-js-app
+    image: app/simple-node-js-app
+    restart: always
+    build: .
+    ports:
+      - "8080:8080"
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - ./app_data:/data/db
+    ports:
+      - "27018:27017"
