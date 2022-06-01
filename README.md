@@ -32,19 +32,23 @@ Done with auth controller, have a router prefix that is /secure:
     - GET /secure/register: renders the register page.
 
 Done with admin controller, have a router prefix /admin:
--POST / insert the pair {lang, word}
--GET / render admin dashboard.
+
+    - POST / insert the pair {lang, word}
+    - GET / render admin dashboard.
+
 Done with translate controller , the UI is on admin dashboard, the router prefix is /translate:
--GET /getTranslation/ gets translation from systrian API for word in one language to another language when the process.ENV.NODE_ENV is TEST, otherwise gets the translation of "Hello world" string from databse for the language given.
--GET /getLanguages/ : get supported language codes in Systrian API.
+
+    - GET /getTranslation/ gets translation from systrian API for word in one language to another language when the process.ENV.NODE_ENV is TEST, otherwise gets the translation of "Hello world" string from databse for the language given.
+    - GET /getLanguages/ : get supported language codes in Systrian API.
 
 ### Dockerization
 
-The whole app is dockerized with 2 containers:
+    The whole app is dockerized with 2 containers:
 
-- one running node.js app. Uses host port 8080.
-- and the other mongodb. Uses host port 27017.
-  To run the app in docker process.env.DOCKER_MONGO_URI needs to be set as the MONGO_URI in server.js, otherwise process.env.MONGO_URI.
+    - one running node.js app. Uses host port 8080.
+    - and the other mongodb. Uses host port 27017.
+
+    To run the app in docker process.env.DOCKER_MONGO_URI needs to be set as the MONGO_URI in server.js, otherwise process.env.MONGO_URI.
 
 To run the app, in the command line type `docker-compose build` in the root folder and after the succesfull build `docker-compose up`.
 
